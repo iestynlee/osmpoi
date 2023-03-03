@@ -1,0 +1,20 @@
+Code Documentation
+==================
+
+.. automodule:: api
+   :members:
+
+.. automodule:: dicts
+   :members:
+
+.. automodule:: downloader
+   :members:
+
+.. automodule:: plotter
+   :members:
+
+.. automodule:: pois
+   :members:
+
+.. automodule:: retrieve
+   :members:
