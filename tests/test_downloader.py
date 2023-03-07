@@ -67,6 +67,39 @@ class TestDownloader(unittest.TestCase):
 
         self.assertEqual(expected_output, result)
 
+    @patch('builtins.open', new_callable=mock_open,
+           read_data=json.dumps([{"Area": "-3.539900,50.734200,-3.489000,50.715000", "Timestamp": "2023-02-15 20:40",
+                                  "Sustenance": 23, "Education": 300, "Transportation": 31, "Financial": 13,
+                                  "Healthcare": 62, "Entertainment": 15, "Public Services": 27, "Facilities": 15,
+                                  "Waste Management": 0, "Other": 160, "Total": 646}]))
+    def test_download(self, mock_open):
+        appending_data = {"Area": "-3.572200,50.767000,-3.470400,50.731700", "Timestamp": "2023-03-07 16:10",
+                          "Sustenance": 166, "Education": 703, "Transportation": 109, "Financial": 57,
+                          "Healthcare": 161, "Entertainment": 44, "Public Services": 60, "Facilities": 35,
+                          "Waste Management": 3, "Other": 330, "Total": 1668}
+        expected_output = [{"Area": "-3.539900,50.734200,-3.489000,50.715000", "Timestamp": "2023-02-15 20:40",
+                            "Sustenance": 23, "Education": 300, "Transportation": 31, "Financial": 13,
+                            "Healthcare": 62, "Entertainment": 15, "Public Services": 27, "Facilities": 15,
+                            "Waste Management": 0, "Other": 160, "Total": 646},
+                           {"Area": "-3.572200,50.767000,-3.470400,50.731700", "Timestamp": "2023-03-07 16:10",
+                            "Sustenance": 166, "Education": 703, "Transportation": 109, "Financial": 57,
+                            "Healthcare": 161, "Entertainment": 44, "Public Services": 60, "Facilities": 35,
+                            "Waste Management": 3, "Other": 330, "Total": 1668}]
+        result = downloader.download(appending_data)
+
+        self.assertEqual(expected_output, result)
+
+    @patch('builtins.open', new_callable=mock_open,
+           read_data=json.dumps([{"Area": "-3.539900,50.734200,-3.489000,50.715000", "Timestamp": "2023-02-15 20:40",
+                                  "Sustenance": 23, "Education": 300, "Transportation": 31, "Financial": 13,
+                                  "Healthcare": 62, "Entertainment": 15, "Public Services": 27, "Facilities": 15,
+                                  "Waste Management": 0, "Other": 160, "Total": 646}]))
+    def test_deleter(self, mock_open):
+        input_value = "-3.539900,50.734200,-3.489000,50.715000"
+        expected_output = []
+        result = downloader.deleter(input_value)
+
+        self.assertEqual(expected_output, result)
 
 if __name__ == '__main__':
     unittest.main()
