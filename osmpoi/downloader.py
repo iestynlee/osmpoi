@@ -65,6 +65,8 @@ def download(poi):
     with open(filename, "w") as f:
         json.dump(data, f)
 
+    return data
+
 
 def loader(poi):
     """Loads a file then checks if the areas of all downloaded data and finds if it one of the downloaded areas already
@@ -118,8 +120,8 @@ def has_expired(data):
 def deleter(poi):
     """Deletes data in the file using the Area code, used for updating information in the file.
 
-    :param poi: Dictionary of the POI
-    :type poi: dict
+    :param poi: String of POI
+    :type poi: str
     :return: Deletes a record
     """
     # Loads file
@@ -140,6 +142,8 @@ def deleter(poi):
     with open(filename, 'w') as file:
         json.dump(data, file)
 
+    return data
+
 
 def manual_delete(min_long, min_lat, max_long, max_lat):
     """Manually delete records in the system
@@ -156,4 +160,5 @@ def manual_delete(min_long, min_lat, max_long, max_lat):
     """
     area = concat(min_long, min_lat, max_long, max_lat)
     loaded = loader(area)
-    deleter(loaded)
+    if loaded is not None:
+        deleter(loaded)
