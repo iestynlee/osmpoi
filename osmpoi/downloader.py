@@ -8,20 +8,20 @@ import numpy as np
 filename = "data.json"
 
 
-def concat(min_long, min_lat, max_long, max_lat):
+def concat(lat_s, long_w, lat_n, long_e):
     """Returns the concatenation of the coordinates into 1 string.
 
-    :param min_long: Minimum Longitude
-    :type min_long: float
-    :param min_lat: Minimum Latitude
-    :type min_lat: float
-    :param max_long: Maximum Longitude
-    :type max_long: float
-    :param max_lat: Maximum Latitude
-    :type max_lat: float
+    :param lat_s: Latitude of Southern Edge
+    :type lat_s: float
+    :param long_w: Longitude of Western Edge
+    :type long_w: float
+    :param lat_n: Latitude of Northern Edge
+    :type lat_n: float
+    :param long_e: Longitude of Eastern Edge
+    :type long_e: float
     :return: A string of these integers with 6 decimal places
     """
-    return "{:.6f},{:.6f},{:.6f},{:.6f}".format(min_long, min_lat, max_long, max_lat)
+    return "{:.6f},{:.6f},{:.6f},{:.6f}".format(lat_s, long_w, lat_n, long_e)
 
 
 def exists(filename):
@@ -145,20 +145,20 @@ def deleter(poi):
     return data
 
 
-def manual_delete(min_long, min_lat, max_long, max_lat):
+def manual_delete(lat_s, long_w, lat_n, long_e):
     """Manually delete records in the system
 
-    :param min_long: Minimum Longitude
-    :type min_long: float
-    :param min_lat: Minimum Latitude
-    :type min_lat: float
-    :param max_long: Maximum Longitude
-    :type max_long: float
-    :param max_lat: Maximum Latitude
-    :type max_lat: float
+    :param lat_s: Latitude of Southern Edge
+    :type lat_s: float
+    :param long_w: Longitude of Western Edge
+    :type long_w: float
+    :param lat_n: Latitude of Northern Edge
+    :type lat_n: float
+    :param long_e: Longitude of Eastern Edge
+    :type long_e: float
     :return: Deleted record
     """
-    area = concat(min_long, min_lat, max_long, max_lat)
+    area = concat(lat_s, long_w, lat_n, long_e)
     loaded = loader(area)
     if loaded is not None:
         deleter(loaded)

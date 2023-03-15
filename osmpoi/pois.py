@@ -24,42 +24,62 @@ def collect(location):
     [out:json][timeout:600];
     (
     node["amenity"~"cafe|bar|biergarten|fast_food|food_court|ice_cream|pub|restaurant"]({0});
+    way["amenity"~"cafe|bar|biergarten|fast_food|food_court|ice_cream|pub|restaurant"]({0});
+    relation["amenity"~"cafe|bar|biergarten|fast_food|food_court|ice_cream|pub|restaurant"]({0});
     );
     out count;
     (
     node["amenity"~"college|driving_school|kindergarden|language_school|library|toy_library|training|music_school|school|university"]({0});
+    way["amenity"~"college|driving_school|kindergarden|language_school|library|toy_library|training|music_school|school|university"]({0});
+    relation["amenity"~"college|driving_school|kindergarden|language_school|library|toy_library|training|music_school|school|university"]({0});
     );
     out count;
     (
     node["amenity"~"bicycle_parking|bicycle_repair_station|bicycle_rental|boat_rental|boat_sharing|bus_station|car_rental|car_sharing|car_wash|compressed_air|vehicle_inspection|charging_station|ferry_terminal|fuel|grit_bin|motorcycle_parking|parking|parking_entrance|parking_space|taxi"]({0});
+    way["amenity"~"bicycle_parking|bicycle_repair_station|bicycle_rental|boat_rental|boat_sharing|bus_station|car_rental|car_sharing|car_wash|compressed_air|vehicle_inspection|charging_station|ferry_terminal|fuel|grit_bin|motorcycle_parking|parking|parking_entrance|parking_space|taxi"]({0});
+    relation["amenity"~"bicycle_parking|bicycle_repair_station|bicycle_rental|boat_rental|boat_sharing|bus_station|car_rental|car_sharing|car_wash|compressed_air|vehicle_inspection|charging_station|ferry_terminal|fuel|grit_bin|motorcycle_parking|parking|parking_entrance|parking_space|taxi"]({0});
     );
     out count;
     (
     node["amenity"~"atm|bank|bureau_de_change"]({0});
+    way["amenity"~"atm|bank|bureau_de_change"]({0});
+    relation["amenity"~"atm|bank|bureau_de_change"]({0});
     );
     out count;
     (
     node["amenity"~"baby_hatch|clinic|dentist|doctors|hospital|nursing_home|pharmacy|social_facility|veterinary"]({0});
+    way["amenity"~"baby_hatch|clinic|dentist|doctors|hospital|nursing_home|pharmacy|social_facility|veterinary"]({0});
+    relation["amenity"~"baby_hatch|clinic|dentist|doctors|hospital|nursing_home|pharmacy|social_facility|veterinary"]({0});
     );
     out count;
     (
     node["amenity"~"arts_centre|brothel|casino|cinema|community_centre|conference_centre|events_venue|fountain|gambling|love_hotel|music_venue|nightclub|planetarium|public_bookcase|social_centre|stripclub|studio|swingerclub|theatre"]({0});
+    way["amenity"~"arts_centre|brothel|casino|cinema|community_centre|conference_centre|events_venue|fountain|gambling|love_hotel|music_venue|nightclub|planetarium|public_bookcase|social_centre|stripclub|studio|swingerclub|theatre"]({0});
+    relation["amenity"~"arts_centre|brothel|casino|cinema|community_centre|conference_centre|events_venue|fountain|gambling|love_hotel|music_venue|nightclub|planetarium|public_bookcase|social_centre|stripclub|studio|swingerclub|theatre"]({0});
     );
     out count;
     (
     node["amenity"~"courthouse|fire_station|police|post_box|post_depot|post_office|prison|ranger_station|townhall"]({0});
+    way["amenity"~"courthouse|fire_station|police|post_box|post_depot|post_office|prison|ranger_station|townhall"]({0});
+    relation["amenity"~"courthouse|fire_station|police|post_box|post_depot|post_office|prison|ranger_station|townhall"]({0});
     );
     out count;
     (
     node["amenity"~"bbq|bench|dog_toilet|dressing_room|drinking_water|give_box|mailroom|parcel_locker|shelter|shower|telephone|toilets|water_point|watering_place"]({0});
+    way["amenity"~"bbq|bench|dog_toilet|dressing_room|drinking_water|give_box|mailroom|parcel_locker|shelter|shower|telephone|toilets|water_point|watering_place"]({0});
+    relation["amenity"~"bbq|bench|dog_toilet|dressing_room|drinking_water|give_box|mailroom|parcel_locker|shelter|shower|telephone|toilets|water_point|watering_place"]({0});
     );
     out count;
     (
     node["amenity"~"sanitary_dump_station|recycling|waste_basket|waste_disposal|waste_transfer_station"]({0});
+    way["amenity"~"sanitary_dump_station|recycling|waste_basket|waste_disposal|waste_transfer_station"]({0});
+    relation["amenity"~"sanitary_dump_station|recycling|waste_basket|waste_disposal|waste_transfer_station"]({0});
     );
     out count;
     (
     node["amenity"~"animal_boarding|animal_breeding|animal_shelter|baking_oven|childcare|clock|crematorium|dive_centre|funeral_hall|grave_yard|hunting_stand|internet_cafe|kitchen|kneipp_water_cure|lounger|marketplace|monastery|photo_booth|place_of_mourning|place_of_worship|public_bath|refugee_site|vending_machine"]({0});
+    way["amenity"~"animal_boarding|animal_breeding|animal_shelter|baking_oven|childcare|clock|crematorium|dive_centre|funeral_hall|grave_yard|hunting_stand|internet_cafe|kitchen|kneipp_water_cure|lounger|marketplace|monastery|photo_booth|place_of_mourning|place_of_worship|public_bath|refugee_site|vending_machine"]({0});
+    relation["amenity"~"animal_boarding|animal_breeding|animal_shelter|baking_oven|childcare|clock|crematorium|dive_centre|funeral_hall|grave_yard|hunting_stand|internet_cafe|kitchen|kneipp_water_cure|lounger|marketplace|monastery|photo_booth|place_of_mourning|place_of_worship|public_bath|refugee_site|vending_machine"]({0});
     );
     out count;
     """

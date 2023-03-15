@@ -3,22 +3,22 @@ from .downloader import *
 import copy
 
 
-def pois_bbox(min_long, min_lat, max_long, max_lat):
+def pois_bbox(lat_s, long_w, lat_n, long_e):
     """All the checks are passed through here to collect the final dictionary of the POIs of the region. It checks, file
     existence, expiry date and if it is downloaded. It will API call first if it doesn't exist and then download it.
 
-    :param min_long: Minimum Longitude
-    :type min_long: float
-    :param min_lat: Minimum Latitude
-    :type min_lat: float
-    :param max_long: Maximum Longitude
-    :type max_long: float
-    :param max_lat: Maximum Latitude
-    :type max_lat: float
+    :param lat_s: Latitude of Southern Edge
+    :type lat_s: float
+    :param long_w: Longitude of Western Edge
+    :type long_w: float
+    :param lat_n: Latitude of Northern Edge
+    :type lat_n: float
+    :param long_e: Longitude of Eastern Edge
+    :type long_e: float
     :return: A dictionary of the POIs
     """
     file_exist()  # Check if the file exists first
-    area = concat(min_long, min_lat, max_long, max_lat)
+    area = concat(lat_s, long_w, lat_n, long_e)
 
     # Checks if region is in file
     in_file = loader(area)
@@ -44,21 +44,21 @@ def pois_bbox(min_long, min_lat, max_long, max_lat):
             return poi
 
 
-def pois_percent(min_long, min_lat, max_long, max_lat):
+def pois_percent(lat_s, long_w, lat_n, long_e):
     """Converts a dictionary of POIs values into percentage values.
 
-    :param min_long: Minimum Longitude
-    :type min_long: float
-    :param min_lat: Minimum Latitude
-    :type min_lat: float
-    :param max_long: Maximum Longitude
-    :type max_long: float
-    :param max_lat: Maximum Latitude
-    :type max_lat: float
+    :param lat_s: Latitude of Southern Edge
+    :type lat_s: float
+    :param long_w: Longitude of Western Edge
+    :type long_w: float
+    :param lat_n: Latitude of Northern Edge
+    :type lat_n: float
+    :param long_e: Longitude of Eastern Edge
+    :type long_e: float
     :return: A dictionary of POIs with the values being percentages
     """
     # Collecting the pois and copying the data
-    dicts = pois_bbox(min_long, min_lat, max_long, max_lat)
+    dicts = pois_bbox(lat_s, long_w, lat_n, long_e)
     poi = copy.copy(dicts)
 
     # Getting the values that don't get affected by the percentage change
