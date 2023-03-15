@@ -184,13 +184,15 @@ exists.</p>
 
 <span class="target" id="module-plotter"></span><dl class="py function">
 <dt class="sig sig-object py" id="plotter.compare">
-<span class="sig-prename descclassname"><span class="pre">plotter.</span></span><span class="sig-name descname"><span class="pre">compare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">poi1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poi2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#plotter.compare" title="Permalink to this definition">¶</a></dt>
-<dd><p>Comparison of two region using a bar graph.</p>
+<span class="sig-prename descclassname"><span class="pre">plotter.</span></span><span class="sig-name descname"><span class="pre">compare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">poi1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poi2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#plotter.compare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Comparison of two region using a bar graph. There is a choice between seeing a percentage bar graph or a natural
+number bar graph</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>poi1</strong> (<em>dict</em>) – A dictionary of POIS</p></li>
 <li><p><strong>poi2</strong> (<em>dict</em>) – A dictionary of POIS</p></li>
+<li><p><strong>percent</strong> (<em>bool</em>) – A choice for percentages in the graph</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -200,15 +202,63 @@ exists.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="plotter.plot">
-<span class="sig-prename descclassname"><span class="pre">plotter.</span></span><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">poi</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#plotter.plot" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plots a bar graph of POIs in a region.</p>
+<dt class="sig sig-object py" id="plotter.coordinates">
+<span class="sig-prename descclassname"><span class="pre">plotter.</span></span><span class="sig-name descname"><span class="pre">coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">poi_title</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#plotter.coordinates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the co-ordinates out of the poi title</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>poi</strong> (<em>dict</em>) – Dictionary of POIs</p>
+<dd class="field-odd"><p><strong>poi_title</strong> (<em>str</em>) – Region code</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>lat_s, long_w, lat_n, long_e these are the co-ordinates</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="plotter.plot">
+<span class="sig-prename descclassname"><span class="pre">plotter.</span></span><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">poi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#plotter.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots a bar graph of POIs in a region. Choice between a natural number bar graph or a percentage bar graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>poi</strong> (<em>dict</em>) – Dictionary of POIs</p></li>
+<li><p><strong>percent</strong> (<em>bool</em>) – Determine if percent is added</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A bar graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="plotter.remove_keys">
+<span class="sig-prename descclassname"><span class="pre">plotter.</span></span><span class="sig-name descname"><span class="pre">remove_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pois</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#plotter.remove_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the keys that are not necessary for graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pois</strong> (<em>dict</em>) – Dictionary of POIs</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Remove the keys in dictionary that are Area, Timestamp and Total</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="plotter.remove_percentages">
+<span class="sig-prename descclassname"><span class="pre">plotter.</span></span><span class="sig-name descname"><span class="pre">remove_percentages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">poi1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poi2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#plotter.remove_percentages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes percentage sign from the values in the dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>poi1</strong> (<em>dict</em>) – Dictionary of POIs with strings in the values</p></li>
+<li><p><strong>poi2</strong> (<em>dict</em>) – Dictionary of POIs with strings in the values</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with the values being floats</p>
 </dd>
 </dl>
 </dd></dl>
@@ -300,7 +350,10 @@ existence, expiry date and if it is downloaded. It will API call first if it doe
 <li class="toctree-l2"><a class="reference internal" href="#downloader.loader"><code class="docutils literal notranslate"><span class="pre">loader()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#downloader.manual_delete"><code class="docutils literal notranslate"><span class="pre">manual_delete()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#plotter.compare"><code class="docutils literal notranslate"><span class="pre">compare()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotter.coordinates"><code class="docutils literal notranslate"><span class="pre">coordinates()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#plotter.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotter.remove_keys"><code class="docutils literal notranslate"><span class="pre">remove_keys()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotter.remove_percentages"><code class="docutils literal notranslate"><span class="pre">remove_percentages()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pois.collect"><code class="docutils literal notranslate"><span class="pre">collect()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#retrieve.pois_bbox"><code class="docutils literal notranslate"><span class="pre">pois_bbox()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#retrieve.pois_percent"><code class="docutils literal notranslate"><span class="pre">pois_percent()</span></code></a></li>
