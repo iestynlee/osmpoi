@@ -64,15 +64,15 @@ available to use.</p>
 
 <span class="target" id="module-downloader"></span><dl class="py function">
 <dt class="sig sig-object py" id="downloader.concat">
-<span class="sig-prename descclassname"><span class="pre">downloader.</span></span><span class="sig-name descname"><span class="pre">concat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_long</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_lat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_long</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_lat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#downloader.concat" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">downloader.</span></span><span class="sig-name descname"><span class="pre">concat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat_s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_e</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#downloader.concat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the concatenation of the coordinates into 1 string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>min_long</strong> (<em>float</em>) – Minimum Longitude</p></li>
-<li><p><strong>min_lat</strong> (<em>float</em>) – Minimum Latitude</p></li>
-<li><p><strong>max_long</strong> (<em>float</em>) – Maximum Longitude</p></li>
-<li><p><strong>max_lat</strong> (<em>float</em>) – Maximum Latitude</p></li>
+<li><p><strong>lat_s</strong> (<em>float</em>) – Latitude of Southern Edge</p></li>
+<li><p><strong>long_w</strong> (<em>float</em>) – Longitude of Western Edge</p></li>
+<li><p><strong>lat_n</strong> (<em>float</em>) – Latitude of Northern Edge</p></li>
+<li><p><strong>long_e</strong> (<em>float</em>) – Longitude of Eastern Edge</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -87,7 +87,7 @@ available to use.</p>
 <dd><p>Deletes data in the file using the Area code, used for updating information in the file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>poi</strong> (<em>dict</em>) – Dictionary of the POI</p>
+<dd class="field-odd"><p><strong>poi</strong> (<em>str</em>) – String of POI</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Deletes a record</p>
@@ -101,7 +101,7 @@ available to use.</p>
 <dd><p>Loads then appends to a current list of dictionaries then writes it to a file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>poi</strong> (<em>str</em>) – This is a string of POI</p>
+<dd class="field-odd"><p><strong>poi</strong> (<em>dict</em>) – This is a dictionary of the POI</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Appends to file</p>
@@ -155,10 +155,29 @@ available to use.</p>
 exists.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>poi</strong> (<em>dict</em>) – dictionary of a POI</p>
+<dd class="field-odd"><p><strong>poi</strong> (<em>str</em>) – String of the area bbox</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>One Area if it exists within the file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="downloader.manual_delete">
+<span class="sig-prename descclassname"><span class="pre">downloader.</span></span><span class="sig-name descname"><span class="pre">manual_delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat_s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_e</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#downloader.manual_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manually delete records in the system</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lat_s</strong> (<em>float</em>) – Latitude of Southern Edge</p></li>
+<li><p><strong>long_w</strong> (<em>float</em>) – Longitude of Western Edge</p></li>
+<li><p><strong>lat_n</strong> (<em>float</em>) – Latitude of Northern Edge</p></li>
+<li><p><strong>long_e</strong> (<em>float</em>) – Longitude of Eastern Edge</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Deleted record</p>
 </dd>
 </dl>
 </dd></dl>
@@ -211,16 +230,16 @@ request. This is to get categories of the POIs and their totals. This is compile
 
 <span class="target" id="module-retrieve"></span><dl class="py function">
 <dt class="sig sig-object py" id="retrieve.pois_bbox">
-<span class="sig-prename descclassname"><span class="pre">retrieve.</span></span><span class="sig-name descname"><span class="pre">pois_bbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_long</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_lat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_long</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_lat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#retrieve.pois_bbox" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">retrieve.</span></span><span class="sig-name descname"><span class="pre">pois_bbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat_s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_e</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#retrieve.pois_bbox" title="Permalink to this definition">¶</a></dt>
 <dd><p>All the checks are passed through here to collect the final dictionary of the POIs of the region. It checks, file
 existence, expiry date and if it is downloaded. It will API call first if it doesn’t exist and then download it.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>min_long</strong> (<em>float</em>) – Minimum Longitude</p></li>
-<li><p><strong>min_lat</strong> (<em>float</em>) – Minimum Latitude</p></li>
-<li><p><strong>max_long</strong> (<em>float</em>) – Maximum Longitude</p></li>
-<li><p><strong>max_lat</strong> (<em>float</em>) – Maximum Latitude</p></li>
+<li><p><strong>lat_s</strong> (<em>float</em>) – Latitude of Southern Edge</p></li>
+<li><p><strong>long_w</strong> (<em>float</em>) – Longitude of Western Edge</p></li>
+<li><p><strong>lat_n</strong> (<em>float</em>) – Latitude of Northern Edge</p></li>
+<li><p><strong>long_e</strong> (<em>float</em>) – Longitude of Eastern Edge</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -231,15 +250,15 @@ existence, expiry date and if it is downloaded. It will API call first if it doe
 
 <dl class="py function">
 <dt class="sig sig-object py" id="retrieve.pois_percent">
-<span class="sig-prename descclassname"><span class="pre">retrieve.</span></span><span class="sig-name descname"><span class="pre">pois_percent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_long</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_lat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_long</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_lat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#retrieve.pois_percent" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">retrieve.</span></span><span class="sig-name descname"><span class="pre">pois_percent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat_s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_e</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#retrieve.pois_percent" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a dictionary of POIs values into percentage values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>min_long</strong> (<em>float</em>) – Minimum Longitude</p></li>
-<li><p><strong>min_lat</strong> (<em>float</em>) – Minimum Latitude</p></li>
-<li><p><strong>max_long</strong> (<em>float</em>) – Maximum Longitude</p></li>
-<li><p><strong>max_lat</strong> (<em>float</em>) – Maximum Latitude</p></li>
+<li><p><strong>lat_s</strong> (<em>float</em>) – Latitude of Southern Edge</p></li>
+<li><p><strong>long_w</strong> (<em>float</em>) – Longitude of Western Edge</p></li>
+<li><p><strong>lat_n</strong> (<em>float</em>) – Latitude of Northern Edge</p></li>
+<li><p><strong>long_e</strong> (<em>float</em>) – Longitude of Eastern Edge</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -279,6 +298,7 @@ existence, expiry date and if it is downloaded. It will API call first if it doe
 <li class="toctree-l2"><a class="reference internal" href="#downloader.file_exist"><code class="docutils literal notranslate"><span class="pre">file_exist()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#downloader.has_expired"><code class="docutils literal notranslate"><span class="pre">has_expired()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#downloader.loader"><code class="docutils literal notranslate"><span class="pre">loader()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#downloader.manual_delete"><code class="docutils literal notranslate"><span class="pre">manual_delete()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#plotter.compare"><code class="docutils literal notranslate"><span class="pre">compare()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#plotter.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pois.collect"><code class="docutils literal notranslate"><span class="pre">collect()</span></code></a></li>
