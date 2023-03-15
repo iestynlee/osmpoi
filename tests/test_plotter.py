@@ -22,7 +22,7 @@ class TestPlotter(unittest.TestCase):
         ylabel = 'Quantity'
 
         # Plotting the data
-        plotter.plot(data)
+        plotter.plot(data, percent=False)
 
         # Mock show of the data
         mock_show.assert_called_once()
@@ -64,7 +64,7 @@ class TestPlotter(unittest.TestCase):
         legend_labels = ['-3.539900,50.734200,-3.489000,50.715000', '-3.491100,50.822500,-3.465700,50.812900']
 
         # Plotting the data
-        plotter.compare(data, data2)
+        plotter.compare(data, data2, percent=False)
 
         # Mock show of the data
         mock_show.assert_called_once()
