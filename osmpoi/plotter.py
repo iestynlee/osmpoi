@@ -200,6 +200,14 @@ def remove_keys(pois):
 
 
 def remove_percentages(poi1, poi2):
+    """Removes percentage sign from the values in the dictionary
+
+    :param poi1: Dictionary of POIs with strings in the values
+    :type poi1: dict
+    :param poi2: Dictionary of POIs with strings in the values
+    :type poi2: dict
+    :return: A dictionary with the values being floats
+    """
     poi_v1_list = list(poi1.values())
     poi_v2_list = list(poi2.values())
 
