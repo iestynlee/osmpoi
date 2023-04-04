@@ -17,7 +17,6 @@ class TestPlotter(unittest.TestCase):
              'Facilities', 'Waste Management', 'Other']
 
         # Expect Labels
-        title = 'Region Co-ordinates: ' + data['Area']
         xlabel = 'Points of Interest'
         ylabel = 'Quantity'
 
@@ -35,7 +34,7 @@ class TestPlotter(unittest.TestCase):
 
         # Checks title are correct
         title_text = plt.gca().get_title()
-        self.assertEqual(title_text, title)
+        self.assertEqual(title_text, 'data')  # Title will be data with the variable name being data
 
         # Check xticks are right
         xticks = plt.gca().get_xticklabels()
@@ -44,7 +43,7 @@ class TestPlotter(unittest.TestCase):
     @patch('matplotlib.pyplot.show')
     def test_compare(self, mock_show):
         # Data being used for the test
-        data = {"Area": "-3.539900,50.734200,-3.489000,50.715000", "Timestamp": "2023-02-28 15:39", "Sustenance": 22,
+        data1 = {"Area": "-3.539900,50.734200,-3.489000,50.715000", "Timestamp": "2023-02-28 15:39", "Sustenance": 22,
                 "Education": 299, "Transportation": 31, "Financial": 13, "Healthcare": 62, "Entertainment": 15,
                 "Public Services": 27, "Facilities": 16, "Waste Management": 0, "Other": 159, "Total": 644}
 
@@ -61,10 +60,10 @@ class TestPlotter(unittest.TestCase):
         title = 'Comparison'
         xlabel = 'Points of Interest'
         ylabel = 'Quantity'
-        legend_labels = ['-3.539900,50.734200,-3.489000,50.715000', '-3.491100,50.822500,-3.465700,50.812900']
+        legend_labels = ['data1', 'data2']
 
         # Plotting the data
-        plotter.compare(data, data2, percent=False)
+        plotter.compare(data1, data2, percent=False)
 
         # Mock show of the data
         mock_show.assert_called_once()
