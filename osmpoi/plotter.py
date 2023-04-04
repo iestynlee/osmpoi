@@ -2,7 +2,8 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 import copy
 import numpy as np
-from .retrieve import pois_percent
+import inspect
+from retrieve import pois_percent
 
 
 def plot(poi, percent=True):
@@ -16,20 +17,28 @@ def plot(poi, percent=True):
     """
     # Setting up variables for the graph
     poi_values = copy.copy(poi)
-    poi_title = list(poi.values())[0]
+    poi_bbox = list(poi.values())[0]
 
     # Ensure the data doesn't have useless data for the x-axis
     poi_values = remove_keys(poi_values)
 
-    # Setting the plotting values
+    # Setting up Plotting values
     fig, ax = plt.subplots(figsize=(10, 6))  # Changing figure size
     plt.xlabel('Points of Interest', fontsize=18)
     plt.ylabel('Quantity', fontsize=18)
-    ax.set_title('Region Co-ordinates: ' + poi_title, fontsize=20)
+
+    # Title
+    title = retrieve_name(poi)
+    if not title:
+        title = poi_bbox
+        ax.set_title('Region Co-ordinates ' + title, fontsize=20)
+    else:
+        title = title[0]
+        ax.set_title(title, fontsize=20)
 
     # Setting percentages above bars
     if percent is True:
-        lat_s, long_w, lat_n, long_e = coordinates(poi_title)  # Get co-ordinates for percentage
+        lat_s, long_w, lat_n, long_e = coordinates(poi_bbox)  # Get co-ordinates for percentage
         poi_percent = pois_percent(lat_s, long_w, lat_n, long_e)  # Percentage call
 
         poi_percent = remove_keys(poi_percent)  # Get rid of values not needed
@@ -88,9 +97,9 @@ def compare(poi1, poi2, percent=True):
     poi_v1 = copy.copy(poi1)
     poi_v2 = copy.copy(poi2)
 
-    # The region labels
-    t1 = list(poi_v1.values())[0]
-    t2 = list(poi_v2.values())[0]
+    # These are the bounding box co-ordinates saved
+    poi_bbox1 = list(poi_v1.values())[0]
+    poi_bbox2 = list(poi_v2.values())[0]
 
     # Get rid of data in both dictionaries that won't be used in the graph
     poi_v1 = remove_keys(poi_v1)
@@ -103,8 +112,8 @@ def compare(poi1, poi2, percent=True):
     # Setting percentages above bars
     if percent is True:
         # Get co-ordinates for percentage
-        lat_s1, long_w1, lat_n1, long_e1 = coordinates(t1)
-        lat_s2, long_w2, lat_n2, long_e2 = coordinates(t2)
+        lat_s1, long_w1, lat_n1, long_e1 = coordinates(poi_bbox1)
+        lat_s2, long_w2, lat_n2, long_e2 = coordinates(poi_bbox2)
 
         # Percentage call
         poi_percent1 = pois_percent(lat_s1, long_w1, lat_n1, long_e1)
@@ -127,8 +136,21 @@ def compare(poi1, poi2, percent=True):
     # The x-axis labels
     ax.set_xticks(range(len(poi_v1)), list(poi_v1.keys()), rotation=90)
 
+    # Titles of the legends
+    title1 = retrieve_name(poi1)  # Gets variable name
+    if not title1:
+        title1 = poi_bbox1
+    else:
+        title1 = title1[0]
+
+    title2 = retrieve_name(poi2)
+    if not title2:
+        title2 = poi_bbox2
+    else:
+        title2 = title2[0]
+
     # Setting up the labels for the bars - Formatting
-    colors = {t1: 'red', t2: 'green'}
+    colors = {title1: 'red', title2: 'green'}
     labels = list(colors.keys())
     handles = [plt.Rectangle((0, 0), 1, 1, color=colors[label]) for label in labels]
     plt.legend(handles, labels, loc='upper right')
@@ -237,3 +259,14 @@ def coordinates(poi_title):
     long_e = float(split[3])
 
     return lat_s, long_w, lat_n, long_e
+
+
+def retrieve_name(var):
+    """Gets the variable name
+
+    :param var: variable
+    :type var: dict
+    :return: variable name
+    """
+    local_vars = inspect.currentframe().f_back.f_back.f_locals.items()
+    return [var_name for var_name, var_val in local_vars if var_val is var]
