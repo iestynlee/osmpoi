@@ -8,3 +8,4 @@ of this Github repository.
 
 ## Examples
 
+There is a juypter notebook with the a file called ```Project Results```. Showing how to use the library and the functions available.
