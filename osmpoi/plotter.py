@@ -3,7 +3,7 @@ import matplotlib.ticker as mtick
 import copy
 import numpy as np
 import inspect
-from retrieve import pois_percent
+from .retrieve import pois_percent
 
 
 def plot(poi, percent=True):
@@ -31,7 +31,7 @@ def plot(poi, percent=True):
     title = retrieve_name(poi)
     if not title:
         title = poi_bbox
-        ax.set_title('Region Co-ordinates ' + title, fontsize=20)
+        ax.set_title('Region Co-ordinates: ' + title, fontsize=16)
     else:
         title = title[0]
         ax.set_title(title, fontsize=20)
