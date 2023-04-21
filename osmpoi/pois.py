@@ -1,8 +1,8 @@
 # Imports required libraries
 import requests
 import json
-from .api import api
-from .dicts import process
+from api import api
+from dicts import process
 import time
 import logging
 
@@ -14,7 +14,8 @@ def collect(location):
     """This will make an API request for using a query to Overpass API. This query is split into 10 queries within a
     request. This is to get categories of the POIs and their totals. This is compiled into a dictionary at the end.
 
-    :param location: This is a string of min long, min lat, max long, max lat for API request
+    :param location: This is a string of Latitude of Southern Edge, Longitude of Western Edge, Latitude of Northern,
+    Longitude of Eastern Edge for API request
     :type location: str
 
     :return: A dictionary of the POIs
@@ -115,5 +116,3 @@ def collect(location):
         # JSON decode error happens when there are too many API calls to Overpass, so it will retry after a second
         print('JSON Decode error occurred: {}'.format(str(e)))
         return None
-
-
