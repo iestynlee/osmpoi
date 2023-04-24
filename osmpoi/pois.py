@@ -1,8 +1,8 @@
 # Imports required libraries
 import requests
 import json
-from api import api
-from dicts import process
+from .api import api
+from .dicts import process
 import time
 import logging
 
